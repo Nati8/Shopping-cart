@@ -6,8 +6,10 @@ public class ShoppingCart {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ShoppingCartGUIForm shoppingCartGUIForm = new ShoppingCartGUIForm();
-                shoppingCartGUIForm.setVisible(true);
+                JFrame frame = new MainFrame("Shopping cart");
+                frame.setSize(600, 400);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
             }
         });
 
