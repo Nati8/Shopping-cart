@@ -12,20 +12,10 @@ public class MainFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        JButton addProducts = new JButton("Add");
-
         detailsPanel = new DetailsPanel();
 
         Container cont = getContentPane();
-        cont.add(addProducts, BorderLayout.SOUTH);
         cont.add(detailsPanel);
 
-
-//        addProducts.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        });
     }
 }

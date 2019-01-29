@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DetailsPanel extends JPanel{
     public DetailsPanel(){
@@ -8,14 +10,9 @@ public class DetailsPanel extends JPanel{
         setPreferredSize(size);
         setBorder(BorderFactory.createTitledBorder("Foodland"));
 
-        JComboBox products = new JComboBox();
-        products.addItem("Select product");
-        products.addItem("Banana");
-        products.addItem("Apple");
-        products.addItem("Watermelon");
-        products.addItem("Cucumber");
-
-
+        String[] productsString = {"Select product","Apple","Banana","Cucumber","Watermelon"};
+        JComboBox products = new JComboBox(productsString);
+        
         DefaultListModel modelSelectedProducts = new DefaultListModel();
         JList selectedProducts = new JList(modelSelectedProducts);
 
@@ -24,8 +21,6 @@ public class DetailsPanel extends JPanel{
         selectedProducts.setVisibleRowCount(-1);
 
         modelSelectedProducts.addElement("Apple");
-        modelSelectedProducts.addElement("App,lewle");
-        modelSelectedProducts.addElement("Aldql;pple");
 
         DefaultListModel modelBill = new DefaultListModel();
         JList bill = new JList(modelBill);
@@ -37,6 +32,21 @@ public class DetailsPanel extends JPanel{
         modelBill.addElement(5.5);
         modelBill.addElement(6.5);
         modelBill.addElement(4);
+
+        JButton addProducts = new JButton("Add");
+
+        addProducts.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String product = (String)products.getSelectedItem();
+                switch (product){
+                        case "Apple":modelSelectedProducts.addElement("Apple"); break;
+                        case "Banana":modelSelectedProducts.addElement("Banana"); break;
+                        case "Cucumber":modelSelectedProducts.addElement("Cucumber"); break;
+                        case "Watermelon":modelSelectedProducts.addElement("Watermelon"); break;
+                    }
+            }
+        });
 
         setLayout(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
@@ -56,20 +66,10 @@ public class DetailsPanel extends JPanel{
         gc.gridy = 0;
         add(bill, gc);
 
-//        JLabel nameLabel = new JLabel("Name: ");
-//        JLabel occupationLabel = new JLabel("Occupation: ");
-//        JTextField nameField = new JTextField(10);
-//        JTextField occupationField = new JTextField(10);
-//        JButton addButton = new JButton("ADD2");
-//
-//        gc.gridx = 0;
-//        gc.gridy = 1;
-//        add(occupationLabel, gc);
-//
-//
-//
-//        gc.gridx = 1;
-//        gc.gridy = 1;
-//        add(occupationField, gc);
+        gc.anchor = GridBagConstraints.CENTER;
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(addProducts, gc);
+
     }
 }
