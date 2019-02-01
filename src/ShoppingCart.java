@@ -7,7 +7,7 @@ public class ShoppingCart {
             @Override
             public void run() {
                 JFrame frame = new MainFrame("Shopping cart");
-                frame.setSize(600, 400);
+                frame.setSize(600, 350);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
